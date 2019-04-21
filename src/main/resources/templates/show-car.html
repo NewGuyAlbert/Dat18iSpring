@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">iCar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/mycar">Cars <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/myperson">Person</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      iCar is the best place to buy
+    </span>
+    </div>
+</nav>
+
+    <h1>this is car view</h1>
+    <!--<h2 th:text="${cars}"></h2>-->
+
+    <table class="table table-hover" id="myTable">
+        <thead>
+        <tr>
+            <th scope="col">Reg</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Color</th>
+            <th scope="col">MaxSpeed</th>
+            <th scope="col">Utility</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car, iter :${cars}">
+            <th scope="row" th:text="${car.reg}">1</th>
+            <td th:text="${car.brand}">Mark</td>
+            <td th:text="${car.color}">Otto</td>
+            <td th:text="${car.maxSpeed}">@mdo</td>
+            <td><a class="btn btn-primary" th:href="@{'/cars/delete/' + ${car.getId()}}">Delete</a>
+                <a class="btn btn-primary" th:href="@{'/cars/edit/' + ${car.getId()}}" >Edit</a>
+                </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+<h3>Add New Car</h3>
+<div class="jumbotron">
+    <!--th:action="@{'/cars/edit/' + ${index} }" th:object="${car}" method="post"-->
+    <form th:object="${carForm}" method="post">
+        <div class="form-group">
+            <label for="regNumber">Reg number</label>
+            <input type="text" class="form-control" id="regNumber" aria-describedby="regNumber" th:field="${carForm.reg}" >
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" aria-describedby="brand" th:field="${carForm.brand}" >
+        </div>
+        <div class="form-group">
+            <label for="color">Color</label>
+            <input type="text" class="form-control" id="color" aria-describedby="color" th:field="${carForm.color}" >
+        </div>
+        <div class="form-group">
+            <label for="maxSpeed">Max Speed</label>
+            <input type="text" class="form-control" id="maxSpeed" aria-describedby="max-speed" th:field="${carForm.maxSpeed}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+    <!--<table>
+        <thead>
+            <th>Reg</th>
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Max Speed</th>
+        </thead>
+        <tr th:each="car:${cars}">
+            <td th:text="${car.reg}">{{REG}}</td>
+            <td th:text="${car.brand}">{{BRAND}}</td>
+            <td th:text="${car.color}">{{COLOR}}</td>
+            <td th:text="${car.maxSpeed}">{{SPEED}}</td>
+        </tr>
+    </table>-->
+
+
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

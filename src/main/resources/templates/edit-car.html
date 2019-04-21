@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Car-edit - Dat18i</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">iCar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/mycar">Cars <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/myperson">Person</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      iCar is the best place to buy
+    </span>
+    </div>
+</nav>
+
+<h3>Edit car</h3>
+<div class="jumbotron">
+    <form th:action="@{'/cars/edit/' + ${index} }" th:object="${car}" method="post">
+        <div class="form-group">
+            <label for="regNumber">Reg number</label>
+            <input type="text" class="form-control" id="regNumber" aria-describedby="regNumber" th:field="${car.reg}" >
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" aria-describedby="brand" th:field="${car.brand}" >
+        </div>
+        <div class="form-group">
+            <label for="color">Color</label>
+            <input type="text" class="form-control" id="color" aria-describedby="color" th:field="${car.color}" >
+        </div>
+        <div class="form-group">
+            <label for="maxSpeed">Max Speed</label>
+            <input type="text" class="form-control" id="maxSpeed" aria-describedby="max-speed" th:field="${car.maxSpeed}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
